@@ -1,0 +1,21 @@
+# Credenciales de Twitter
+CONSUMER_KEY = "your-data-here"
+CONSUMER_SECRET = "your-data-here"
+ACCESS_TOKEN = "your-data-here"
+ACCESS_TOKEN_SECRET = "your-data-here"
+
+# La URL base
+BASE = "https://lemmy.lm/api/v3/"
+
+# URL para iniciar sesión
+LOGIN = "user/login"
+
+# URL para crear post
+CREATE_POST = "post"
+
+# URL para subir imagen al servidor
+UPLOAD_IMAGE = "https://lemmy.lm/pictrs/image"
+
+# Usuario y contraseña de la cuenta
+USERNAME = "your lemmy username"
+PASSWORD = "your lemmy password"
