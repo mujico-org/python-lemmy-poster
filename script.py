@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-"""Takes the last 10 user tweets and posts them to Reddit if they include one image."""
+"""Takes the last 10 user tweets and posts them to Lemmy if they include one image."""
 
 import requests
 import tweepy
@@ -138,13 +138,13 @@ def lemmy_upload_picture(token, image_path):
         return response.json()["files"][0]["file"]
 
 
-def lemmy_create_post(token, title, community =5 , url = BASE):
+def lemmy_create_post(token, title, community, url = BASE):
     """
     Esta función crea el post en la comunidad específicada.
 
     El id de la comunidad es un número, para conocerlo debes buscarlo aquí:
 
-    https://soranos.app/api/v3/community/list
+    https://lemmy.lm/api/v3/community/list
 
     """
 
@@ -160,7 +160,7 @@ def lemmy_create_post(token, title, community =5 , url = BASE):
 
 
 def init_bot():
-    """Read twwts get images and submit to subreddit."""
+    """Read tweets get images and submit to subreddit."""
 
     # We create the Lemmy instance.
 
@@ -192,8 +192,8 @@ def init_bot():
             image_count = len(tweet.extended_entities['media'])
             print('media number: {}  created_at: {}'.format(
                 image_count, tweet.created_at))
-            if image_count and image_count < 2 and tweet.created_at >= tolerance_time or True:
-                print("loo")
+            if image_count and image_count < 2 and tweet.created_at >= tolerance_time:
+
                 title = ' '.join([item for item in tweet.full_text.split(
                     ' ') if 'https' not in item]).replace('.', '')
                 title = ' '.join(title.replace(
